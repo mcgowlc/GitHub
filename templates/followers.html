@@ -1,0 +1,64 @@
+{#THIS PAGE IS GOING TO BE GOTTEN TO BY CLICKING FOLLOWERS TAB#}
+
+{#THIS IMPORTS ALL THE MAIN HTML FROM BASE HTML SO LAYOUT WILL LOAD ON THIS SEPERATE PAGE IN BROWSER#}
+{%extends "base.html"%}
+
+
+{#TEMPLATE TAG TO BUILD HTML#}
+
+
+{% block info_followers %}
+    <ul class="list-group">
+{#    FOR LOOOP TO GO THROUGH EACH FOLLOWER IN LIST OF FOLLOWERS AND MAKES A ROW OF EACH FOLLOWER#}
+        {% for follower  in followers %}
+{#            CREATES A TABLE OF FOLLOWER NAMES WITH A LINKS TO UNFOLLOW#}
+
+            <table class="table">
+{#            TABLE BODY#}
+                <tbody>
+                    <tr>
+{#                    WRITE SOMETHING TO  USE INDEX +1 HERE, MAKES ROW NUMBER#}
+
+
+
+                        <div class="d-table-cell col-2 v-align-top">
+{#                            MAKES THE IMAGE A LINK , FIGURE OUT HOW TO GET IMAGE IN HERE#}
+                            <a class="avatar-follower" ><img src="{{ follower.avatar_url }}" width="100px"
+                                                             height="100px">"{{ follower.avatar }}" </a>
+                        </div>
+
+{#                            MAKES THIS COLUMN 9 WIDE OUT OF F12 AND ALIGNES IT TO THE TOP#}
+                         <div class="d-table-cell col-9 v-align-top">
+{#                             MAKES A CLICKABLE LINK ON FOLLOWERS NAME#}
+                             <a class="d-inline-block no-underline " href="{{follower.name}}">"{{ follower.name }}" </a>
+{#                                INSERT FOLLOWERS USERNAME#}
+                            <a href="{{follower.login}}">{{ follower.login }}</a>
+                            <a href="{{follower.email}}">{{ follower[email] }}</a>
+
+                            {% if follower.location %}
+                             <p class="link-gray "> {{ follower.location }} </p>
+                            {% endif %}
+
+
+                             {%  if follower.bio %}
+                             <p class="text-gray text-small bio "> {{ follower.bio }}</p>
+                             {% endif %}
+
+                        </div>
+{
+                          <div class=" d-table-cell col 2 v-align-top text-right ">
+                              <button class="btn-bt-sm js-toggler-target ">UNFOLLOW</button>
+                          </div>
+                    </tr>
+
+                </tbody>
+            </table>
+{#            ENDS THIS TEMPLATE TAG FOR LOOP#}
+        {% endfor %}
+    </ul>
+{#    ENDS THIS TEMPLATE TAG SECTION#}
+
+{% endblock %}
+
+{#<p>{{ follower.login }}</p>#}
+{#<p><img src="{{ follower.avatar_url }}" alt=""></p>#}

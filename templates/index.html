@@ -1,0 +1,33 @@
+{#THIS PAGE IS GOING TO BE THE FIRST PAGE WE PULL UP, WHICH WILL BE THE REPO TAB#}
+
+{# **********  LIST OF REPOS ERRORING  ***************#}
+
+
+{#IMPORTS ALL THE HTML FROM BASE.HTML#}
+{% extends "base.html" %}
+
+
+{#TEMPLATE TAG TO BUILD HTML#}
+{% block content %}
+{#    MAKE A UL TO HOLD THE LIST OF REPOS -  THIS WILL GO IN COL-MD-8#}
+    <ul class="list-group repo-table">
+{#    FOR LOOOP TO GO THROUGH EACH REPOSITORY ITEM AND MAKE A LINK OUT OF THE NAME#}
+        {% for repo in repos %}
+{#            CREATES A LIST OF THE REPOSITORY TITLES WITH LINKS TO THE REPOS#}
+            <li class="list-group-item repo-table-item">
+
+{#               IN THE CURLY BRACES IN THIS, IT WILL INSERT THE TITLE OF THE REPO FOR THAT LINK#}
+                <a class="btn btn-primary repos-link"  href="{{repo.html_url}}">"{{ repo.name }}"</a>
+{#                 MAKES A BUTTON WITH A STAR ON IT TO STAR THE REPOSITORY#}
+                <sa href="#" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-star"></span> Star</sa>
+            </li>
+{#            ENDS THIS TEMPLATE TAG FOR LOOP#}
+        {% endfor %}
+    </ul>
+{#    ENDS THIS TEMPLATE TAG SECTION#}
+{% endblock %}
+
+
+
+{#{% block  %} {{ }} {% endblock %}#}
